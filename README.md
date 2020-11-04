@@ -1,10 +1,69 @@
 # nextpnr
 支持ice40，ecp5，Artix-7，UltraScale+
 
-## nextpnr-ice40
-## nextpnr-ecp5
+## 1、nextpnr-ice40
+* 预备安装：
+  - CMake 3.3 or later
+  - Modern C++11 compiler (clang-format required for development)
+  - Qt5 or later (qt5-default for Ubuntu 16.04)
+  - Python 3.5 or later, python3-dev
+  - Boost libraries(libboost-dev libboost-filesystem-dev libboost-thread-dev libboost-program-options-dev libboost-python-dev libboost-iostreams-dev libboost-dev or libboost-all-dev for Ubuntu)
+  - Eigen3 (libeigen3-dev for Ubuntu)
+  
+* 下载 Yosys ：
+  ```
+  git clone https://github.com/YosysHQ/yosys.git yosys
+  cd yosys
+  make -j$(nproc)
+  sudo make install
+  ```  
+* 下载 IceStorm 工具包：
+  ```
+  git clone https://github.com/YosysHQ/icestorm.git icestorm
+  cd icestorm
+  make -j$(nproc)
+  sudo make install  # 会将icestorm安装至/usr/local本地目录
+  ```
+* 下载nextpnr，执行下述代码会在 nextpnr 目录下生成"nextpnr-ice40"文件：
+  ```
+  git clone https://github.com/YosysHQ/nextpnr nextpnr
+  cd nextpnr
+  cmake -DARCH=ice40 -DCMAKE_INSTALL_PREFIX=/usr/local
+  make -j$(nproc)
+  sudo make install
+  ```
+* 运行例子：
+  ```
+  cd ice40/examples/blinky
+  yosys -p 'synth_ice40 -top blinky -json blinky.json' blinky.v               # 综合，生成网表blinky.json
+  nextpnr-ice40 --hx1k --json blinky.json --pcf blinky.pcf --asc blinky.asc   # 布局、布线
+  icepack blinky.asc blinky.bin                                               # 生成二进制比特流文件
+  ```
+  如果想要图形化界面，第三行换成如下命令：
+  ```
+  nextpnr-ice40 --json blinky.json --pcf blinky.pcf --asc blinky.asc --gui
+  ```
+  然后通过界面的功能按钮实现打包，布局，布线和写出相应输出文件。
+  
+## 2、nextpnr-ecp5
+* 下载并安装Project Trellis工具：
+  ```
+  git clone --recursive https://github.com/YosysHQ/prjtrellis
+  cd libtrellis
+  cmake -DCMAKE_INSTALL_PREFIX=/usr/local
+  make -j$(nproc)
+  sudo make install
+  ```
+* 在 nextpnr 目录下执行如下代码，生成 nextpnr-ecp5 文件：
+   ```
+   cmake -DARCH=ecp5 -DTRELLIS_INSTALL_PREFIX=/usr/local
+   make -j$(nproc)
+   sudo make install
+   ```
+  
 
-## nextpnr-Artix-7
+
+## 3、nextpnr-Artix-7
 * 下载nextpnr-xilinx：git clone https://github.com/daveshah1/nextpnr-xilinx/
 * 进入 nextpnr-xilinx 目录，下载子模块：
   - git submodule init 
@@ -58,6 +117,6 @@ make
   
   
   
-## nextpnr-UltraScale+
+## 4、nextpnr-UltraScale+
 
 
