@@ -28,7 +28,7 @@
   ```
   git clone https://github.com/YosysHQ/nextpnr nextpnr
   cd nextpnr
-  cmake -DARCH=ice40 -DCMAKE_INSTALL_PREFIX=/usr/local
+  cmake -DARCH=ice40 -DCMAKE_INSTALL_PREFIX=/usr/local .
   make -j$(nproc)
   sudo make install
   ```
@@ -56,7 +56,7 @@
   ```
 * 在 nextpnr 目录下执行如下代码，生成 nextpnr-ecp5 文件：
    ```
-   cmake -DARCH=ecp5 -DTRELLIS_INSTALL_PREFIX=/usr/local
+   cmake -DARCH=ecp5 -DTRELLIS_INSTALL_PREFIX=/usr/local .
    make -j$(nproc)
    sudo make install
    ```
