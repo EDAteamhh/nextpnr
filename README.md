@@ -130,5 +130,19 @@ make
   
   
 ## 4、nextpnr-UltraScale+
-
-
+## 5、用Clion调试执行nextpnr
+以nextpnr-xilinx为例：
+* 以CMake Project形式将nextpnr根目录导入Clion，如果失败，根据错误信息配置环境
+* 修改 CMakeLists.txt 第211行：set(CMAKE_BUILD_TYPE "Debug")
+* 选择nextpnr-xilinx，执行build
+* 在Run/Debug Configuration下配置参数：
+Program arguments：
+```
+--chipdb /home/liyu/Desktop/EFCAD/nextpnr-xilinx/cmake-build-debug/xc7a35t.bin --xdc /home/liyu/Desktop/EFCAD/nextpnr-xilinx/cmake-build-debug/examples/arty-a35/arty.xdc --json /home/liyu/Desktop/EFCAD/nextpnr-xilinx/cmake-build-debug/examples/arty-a35/blinky.json --write blinky_routed.json --fasm blinky.fasm
+```
+Working directory:
+```
+/home/liyu/Desktop/EFCAD/nextpnr-xilinx/cmake-build-debug/examples/arty-a35
+```
+**注意：**与命令行执行的：`nextpnr-xilinx --chipdb XXX.bin --xdc XXX.xdc --json xxx.json --write xxx_routed.json --fasm xxx.fasm` 是一样的
+* 可以调试或者运行
