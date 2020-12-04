@@ -144,5 +144,5 @@ Working directory:
 ```
 /home/liyu/Desktop/EFCAD/nextpnr-xilinx/cmake-build-debug/examples/arty-a35
 ```
-**注意：**与命令行执行的：`nextpnr-xilinx --chipdb XXX.bin --xdc XXX.xdc --json xxx.json --write xxx_routed.json --fasm xxx.fasm` 是一样的
+注意：与命令行执行的：`nextpnr-xilinx --chipdb XXX.bin --xdc XXX.xdc --json xxx.json --write xxx_routed.json --fasm xxx.fasm` 是一样的
 * 可以调试或者运行
