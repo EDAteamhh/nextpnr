@@ -10,6 +10,15 @@
   - Boost libraries(libboost-dev libboost-filesystem-dev libboost-thread-dev libboost-program-options-dev libboost-python-dev libboost-iostreams-dev libboost-dev or libboost-all-dev for Ubuntu)
   - Eigen3 (libeigen3-dev for Ubuntu)
   
+* 注意事项：
+  1. nextpnr-ice40 和 nextpnr-ecp5 的编译需要 gcc-5 g++-5，以支持c++14
+  2. 更换 gcc5 编译器后，boost需要重新安装，否则链接时会出现："对 boost::program_options" 等头文件的未定义引用
+    ```
+    ./bootstrap.sh --prefix=/usr   // 指定头文件和库文件的安装目录 /usr/include  /usr/lib
+    ./b2 --build-type=complete --layout=tagged     // 安装最全的boost
+    sudo ./b2 install
+    ```
+  
 * 下载 Yosys ：
   ```
   git clone https://github.com/YosysHQ/yosys.git yosys
