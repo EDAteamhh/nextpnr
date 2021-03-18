@@ -92,7 +92,12 @@
   - 注意：没有这一步，子模块“tests” “xilinx/external/prjxray-db” “xilinx/external/nextpnr-xilinx-meta”中会缺数据文件
 * 下载Project Xray：git clone https://github.com/SymbiFlow/prjxray
 * 进入 prjxray 目录，构建Project Xray：
-  - 安装 Vivado 2017.2 （必须是这个版本） ，创建环境变量：export XRAY_VIVADO_SETTINGS=/opt/Xilinx/Vivado/2017.2/settings64.sh
+  - 安装 Vivado 2017.2 （必须是这个版本） ，创建环境变量：
+  ```
+  export XRAY_VIVADO_SETTINGS=/opt/Xilinx/Vivado/2017.2/settings64.sh
+  export XRAY_DIR=/home/liyu/Desktop/nextpnrXilinx/nextpnr-xilinx/prjxray
+  ```
+  
   - 下载子模块：git submodule update --init --recursive
   - 安装cmake：sudo apt-get install cmake # version 3.5.0 or later required
   - 构建工具：make build
