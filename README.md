@@ -60,16 +60,16 @@
    make -j$(nproc)
    sudo make install
    ```
-* 运行例子：
+* 运行例子在prjtrellis/examples目录：
   ```
-  cd ecp5/synth
-  yosys -p 'synth_ecp5 -noccu2 -nomux -nodram -json blinky.json' blinky.v              # 综合，生成网表blinky.json
-  nextpnr-ecp5 --12k --json blinky.json --package CABGA381 --textcfg blinky   # 布局、布线
-  ecppack blinky blinky.bin                                               # 生成二进制比特流文件
+  cd prjtrellis/examples/ecp5_evn
+  yosys -p 'synth_ecp5 -json blinky.json' blinky.v              # 综合，生成网表blinky.json
+  nextpnr-ecp5 --json blinky.json --textcfg blinky_out.config --um5g-85k --package CABGA381 --lpf ecp5evn.lpf
+  ecppack --svf blinky.svf blinky_out.config blinky.bit
   ```
   如果想要图形化界面，第三行换成如下命令：
   ```
-  nextpnr-ecp5 --12k --json blinky.json --package CABGA381 --textcfg blinky --gui
+  nextpnr-ecp5 --json blinky.json --textcfg blinky_out.config --um5g-85k --package CABGA381 --lpf ecp5evn.lpf --gui
   ```
   然后通过界面的功能按钮实现打包，布局，布线和写出相应输出文件。
   
