@@ -97,7 +97,7 @@
   export XRAY_VIVADO_SETTINGS=/opt/Xilinx/Vivado/2017.2/settings64.sh
   export XRAY_DIR=/home/liyu/Desktop/nextpnrXilinx/nextpnr-xilinx/prjxray
   ```
-  
+  （这里没有Vivado或者版本不对，都不会影响bit流的生成）
   - 下载子模块：git submodule update --init --recursive
   - 安装cmake：sudo apt-get install cmake # version 3.5.0 or later required
   - 构建工具：make build
